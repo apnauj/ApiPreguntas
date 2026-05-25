@@ -23,7 +23,7 @@ namespace ApiPreguntas.Controllers
             return Ok(await _preguntasService.Create(preguntaCreateDto));
         }
 
-        [HttpGet("{status}")]
+        [HttpGet("{estado}")]
         public async Task<IActionResult> GetByStatus(Estado estado)
         {
             return Ok(await _preguntasService.GetByEstado(estado));

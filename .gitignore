@@ -6,7 +6,6 @@ obj/
 out/
 *.sln.docstates
 *.slnx
-Migrations/
 
 
 ## --- JetBrains (Rider) ---
