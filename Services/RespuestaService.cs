@@ -1,6 +1,7 @@
 using ApiPreguntas.Enums;
 using ApiPreguntas.Interfaces;
 using ApiPreguntas.Models;
+using ApiPreguntas.Models.DTOs;
 using ApiPreguntas.Persistence;
 
 namespace ApiPreguntas.Services;
@@ -14,10 +15,17 @@ public class RespuestaService : IRespuestaService
         _context = context;
     }
     
-    public async Task<Respuesta> Create(Respuesta respuesta)
+    public async Task<Respuesta> Create(RespuestaCreateDto respuestaDto)
     {
-        if (await ChangeStatus(respuesta.PreguntaId))
+        
+        
+        if (await ChangeStatus(respuestaDto.PreguntaId))
         {
+            var respuesta = new Respuesta
+            {
+                PreguntaId = respuestaDto.PreguntaId,
+                Contenido = respuestaDto.Contenido
+            };
             _context.Respuestas.Add(respuesta);
             await _context.SaveChangesAsync();
             return respuesta;
