@@ -1,0 +1,22 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using ApiPreguntas.Enums;
+
+namespace ApiPreguntas.Models;
+
+public class Pregunta
+{
+    [Key]
+    [Required]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public Guid Id { get; set; }
+    
+    [Required]
+    [StringLength(300, MinimumLength = 5, ErrorMessage = "La pregunta debe tener como máximo 300 caracteres y mínimo 5 caracteres")]
+    public required string Enunciado { get; set; }
+    
+    [Required]
+    public Categoria Categoria { get; set; }
+
+    [Required] public Estado Estado { get; set; } = Estado.SinResolver;
+}
