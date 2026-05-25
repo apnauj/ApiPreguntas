@@ -1,5 +1,6 @@
 using ApiPreguntas.Interfaces;
 using ApiPreguntas.Models;
+using ApiPreguntas.Models.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,9 +18,9 @@ namespace ApiPreguntas.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] Respuesta respuesta)
+        public async Task<IActionResult> Create([FromBody] RespuestaCreateDto respuestaCreateDto)
         {
-            var result = await _respuestaService.Create(respuesta);
+            var result = await _respuestaService.Create(respuestaCreateDto);
             return (result != null) ? Ok(result) : NotFound();
         }
     }
