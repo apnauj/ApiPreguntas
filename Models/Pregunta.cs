@@ -12,11 +12,11 @@ public class Pregunta
     public Guid Id { get; set; }
     
     [Required]
-    [StringLength(300, MinimumLength = 5, ErrorMessage = "La pregunta debe tener como máximo 300 caracteres y mínimo 5 caracteres")]
     public required string Enunciado { get; set; }
     
     [Required]
     public Categoria Categoria { get; set; }
 
-    [Required] public Estado Estado { get; set; } = Estado.SinResolver;
+    [Required]
+    public Estado Estado { get; set; } = Estado.SinResolver;
 }
